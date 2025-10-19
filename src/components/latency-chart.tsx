@@ -32,7 +32,7 @@ export function LatencyChart({players}: LatencyChartProps) {
         return players
             .filter(p => p.lastLatency > 0)
             .sort((a, b) => b.lastLatency - a.lastLatency)
-            .slice(0, 32)
+            .slice(0, 16)
             .map(player => ({
                 name: player.name,
                 latency: player.lastLatency,
@@ -59,7 +59,7 @@ export function LatencyChart({players}: LatencyChartProps) {
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <div style={{height: '200px'}}>
+                <div style={{height: '160px'}}>
                     <ChartContainer
                         config={chartConfig}
                         className="w-full h-full"
