@@ -1,5 +1,6 @@
 import {PrismaClient} from '@/generated/prisma';
 import {cn} from '@/lib/utils';
+import {LatencyChart} from '@/components/latency-chart';
 
 const slugify = (text: string) => {
     return text
@@ -62,6 +63,8 @@ export default async function Home() {
                     <h2 className="text-xl font-bold border-b pb-1">
                         {serverAddress}
                     </h2>
+
+                    <LatencyChart players={playersByServer[serverAddress]} />
 
                     <div className="flex flex-col gap-2 pl-4">
                         {playersByServer[serverAddress].map(player => (
