@@ -12,13 +12,10 @@ datasource db {
 }
 
 model User {
-  id                Int      @id @default(autoincrement())
-  uuid              String   @unique
-  name              String
-  lastServerAddress String
-  createRefer       String
-  createAt          DateTime @default(now())
-  updateAt          DateTime @updatedAt
-  updates           Int
-  lastLatency       Int      @default(0)
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  createRefer String
+  createAt    DateTime @default(now())
+  updateAt    DateTime @updatedAt
+  updates     Int
 }
