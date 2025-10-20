@@ -1,0 +1,8 @@
+services:
+  prod:
+    env_file: '.env'
+    volumes:
+      - ./storage:/app/storage
+    build: .
+    environment:
+      - DATABASE_URL=/app/storage/
