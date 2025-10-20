@@ -4,8 +4,8 @@ import {ThemeProvider} from '@/components/theme-provider';
 import {Suspense} from 'react';
 
 export const metadata: Metadata = {
-    title: 'Dashboard',
-    description: 'Xxxx',
+    title: 'LemonTracker Dashboard',
+    description: 'Abstract tracker',
 };
 
 export default function RootLayout({
