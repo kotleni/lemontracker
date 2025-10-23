@@ -1,8 +1,26 @@
 services:
   prod:
-    env_file: '.env'
+    networks:
+      traefik: {}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.lemontracker.rule=Host(`lemon.fra1.kotleni.pp.ua`)"
+      - "traefik.http.routers.lemontracker.entrypoints=websecure"
+      - "traefik.http.routers.lemontracker.service=lemontracker"
+      - "traefik.http.services.lemontracker.loadbalancer.server.port=3000"
     volumes:
       - ./storage:/app/storage
-    build: .
+    build:
+      context: .
+      args:
+        - DATABASE_URL=file:/app/storage/lemon.db
+    container_name: lemon-tracker
     environment:
-      - DATABASE_URL=/app/storage/
+      - DATABASE_URL=file:/app/storage/lemon.db
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
